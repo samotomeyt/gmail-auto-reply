@@ -6,3 +6,4 @@ token.json
 alerts.log
 .lambda-build/
 function.zip
+autostop-function.zip
