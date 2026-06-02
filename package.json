@@ -1,0 +1,33 @@
+{
+  "name": "gmail-auto-reply",
+  "version": "1.0.0",
+  "description": "Local Gmail auto-reply for assessment start issues",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "run-once": "node scripts/run-once.js",
+    "test:subject": "node scripts/test-subject-filter.js",
+    "test:parse": "node scripts/test-support-parse.js",
+    "test:dedup": "node scripts/test-dedup-guard.js",
+    "test:inbox": "node scripts/test-inbox-safety.js",
+    "monitor:health": "node scripts/monitor-health-check.js",
+    "aws:setup-secrets": "bash infra/setup-secrets.sh",
+    "aws:deploy": "bash infra/deploy-lambda.sh",
+    "aws:deploy-autostop": "bash infra/deploy-autostop.sh",
+    "aws:invoke": "bash infra/invoke-lambda.sh",
+    "test": "npm run test:subject && npm run test:parse && npm run test:dedup && npm run test:inbox"
+  },
+  "keywords": [
+    "gmail",
+    "auto-reply"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1058.0",
+    "@aws-sdk/client-secrets-manager": "^3.888.0",
+    "@aws-sdk/lib-dynamodb": "^3.1058.0",
+    "dotenv": "^17.4.2",
+    "googleapis": "^172.0.0",
+    "openai": "^6.39.0"
+  }
+}
